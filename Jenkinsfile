@@ -17,6 +17,7 @@ pipeline {
     post {
         success {
             script {
+                println env.BRANCH_NAME
                 if(env.BRANCH_NAME == 'main') {
                     build(job: 'benedek.izso.test', wait: false, parameters: [string(name: 'ENV', value: 'staging')])
                 }
