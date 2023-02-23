@@ -3,7 +3,7 @@ pipeline {
         http_proxy = 'http://webproxy.emarsys.at:3128'
         https_proxy = 'http://webproxy.emarsys.at:3128'
         
-        FULL_PATH_BRANCH = sh("git name-rev --name-only HEAD | xargs | tr -d '\n'").trim()
+        FULL_PATH_BRANCH = sh(returnStdout: true, script: "git name-rev --name-only HEAD | xargs | tr -d '\n'").trim()
         BRANCH_NAME = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
     }
     
