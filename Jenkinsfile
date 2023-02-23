@@ -22,6 +22,7 @@ pipeline {
             script {
                 println env.BRANCH_NAME
                 if(env.BRANCH_NAME == 'main') {
+                    echo ${GIT_COMMIT} > COMMIT_HASH
                     build(job: 'benedek.izso.test', wait: false, parameters: [string(name: 'ENV', value: 'staging')])
                 }
             }
