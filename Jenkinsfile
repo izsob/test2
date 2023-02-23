@@ -2,6 +2,8 @@ pipeline {
     environment {
         http_proxy = 'http://webproxy.emarsys.at:3128'
         https_proxy = 'http://webproxy.emarsys.at:3128'
+        
+        BRANCH_NAME = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
     }
     
     agent any
