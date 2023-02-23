@@ -23,7 +23,7 @@ pipeline {
                 println env.BRANCH_NAME
                 if(env.BRANCH_NAME == 'main') {
                     sh "echo ${GIT_COMMIT} > COMMIT_HASH"
-                    writeFile file: 'COMMIT_HASH2', text: ${GIT_COMMIT}"
+                    writeFile file: 'COMMIT_HASH2', text: ${GIT_COMMIT}
                     build(job: 'benedek.izso.test', wait: false, parameters: [string(name: 'ENV', value: 'staging')])
                 }
             }
