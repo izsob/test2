@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Greeting') {
             steps {
-                echo 'Hello World 19'
+                echo 'Hello World 22'
             }
         }
     }
