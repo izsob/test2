@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Greeting') {
             steps {
-                echo 'Hello World 26'
+                echo 'Hello World 27'
             }
         }
     }
@@ -22,9 +22,8 @@ pipeline {
             script {
                 println env.BRANCH_NAME
                 if(env.BRANCH_NAME == 'main') {
-                    sh "echo ${GIT_COMMIT} > COMMIT_HASH"
-                    writeFile file: 'COMMIT_HASH2', text: env.GIT_COMMIT
-                    archiveArtifacts artifacts: 'COMMIT_HASH2', fingerprint: true
+                    writeFile file: 'COMMIT_HASH', text: env.GIT_COMMIT
+                    archiveArtifacts artifacts: 'COMMIT_HASH', fingerprint: true
                     build(job: 'benedek.izso.test', wait: false, parameters: [string(name: 'ENV', value: 'staging')])
                 }
             }
